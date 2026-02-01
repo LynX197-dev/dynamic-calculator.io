@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Modern Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="calculator" role="application" aria-label="Calculator">
+      <div class="toolbar">
+        <label for="theme-select" class="visually-hidden">Theme</label>
+        <select id="theme-select" aria-label="Choose theme">
+          <option value="system">System</option>
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+          <option value="ocean">Ocean</option>
+        </select>
+      </div>
+
+      <div class="display" id="display" aria-live="polite">0</div>
+
+      <div class="keys" role="group" aria-label="Calculator buttons">
+        <button class="btn function" data-action="clear" aria-label="Clear">C</button>
+        <button class="btn function" data-action="delete" aria-label="Backspace">⌫</button>
+        <button class="btn function" data-action="percent" aria-label="Percent">%</button>
+        <button class="btn operator" data-value="÷" aria-label="Divide">÷</button>
+
+        <button class="btn" data-value="7">7</button>
+        <button class="btn" data-value="8">8</button>
+        <button class="btn" data-value="9">9</button>
+        <button class="btn operator" data-value="×" aria-label="Multiply">×</button>
+
+        <button class="btn" data-value="4">4</button>
+        <button class="btn" data-value="5">5</button>
+        <button class="btn" data-value="6">6</button>
+        <button class="btn operator" data-value="-" aria-label="Minus">−</button>
+
+        <button class="btn" data-value="1">1</button>
+        <button class="btn" data-value="2">2</button>
+        <button class="btn" data-value="3">3</button>
+        <button class="btn operator" data-value="+" aria-label="Plus">+</button>
+
+        <button class="btn" data-action="negate" aria-label="Negate">±</button>
+        <button class="btn" data-value="0">0</button>
+        <button class="btn" data-value=".">.</button>
+        <button class="btn equals" data-action="calculate" aria-label="Equals">=</button>
+      </div>
+    </section>
+
+    <footer class="credits">
+      <small>Keyboard supported: numbers, + - * / (or × ÷), Enter =, Backspace, Esc to clear</small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
