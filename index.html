@@ -1,59 +1,134 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dynamic Calculator | LynX Development</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <main class="app">
-    <section class="calculator" role="application" aria-label="Calculator">
-      <div class="toolbar">
-        <label for="theme-select" class="visually-hidden">Theme</label>
-        <select id="theme-select" aria-label="Choose theme">
-          <option value="system">System</option>
-          <option value="dark">Dark</option>
-          <option value="light">Light</option>
-          <option value="ocean">Ocean</option>
-        </select>
-      </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Dynamic Calculator | LynX Development</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="calculator" role="application" aria-label="Calculator">
+        <div class="toolbar">
+          <div class="left-tools">
+            <button
+              id="sci-toggle"
+              class="mini-btn"
+              aria-pressed="false"
+              title="Toggle scientific panel">
+              Sci
+            </button>
+            <button
+              id="deg-toggle"
+              class="mini-btn"
+              aria-pressed="false"
+              title="Degrees / Radians">
+              deg
+            </button>
+          </div>
 
-      <div class="display" id="display" aria-live="polite">0</div>
+          <label for="theme-select" class="visually-hidden">Theme</label>
+          <select id="theme-select" aria-label="Choose theme">
+            <option value="system">System</option>
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+            <option value="ocean">Ocean</option>
+          </select>
+        </div>
 
-      <div class="keys" role="group" aria-label="Calculator buttons">
-        <button class="btn function" data-action="clear" aria-label="Clear">C</button>
-        <button class="btn function" data-action="delete" aria-label="Backspace">⌫</button>
-        <button class="btn function" data-action="percent" aria-label="Percent">%</button>
-        <button class="btn operator" data-value="÷" aria-label="Divide">÷</button>
+        <!-- Scientific panel (hidden by default) -->
+        <div class="scientific" id="scientific" aria-hidden="true">
+          <button class="btn sci" data-fn="pi">π</button>
+          <button class="btn sci" data-fn="e">e</button>
+          <button class="btn sci" data-fn="factorial">x!</button>
+          <button class="btn sci" data-fn="reciprocal">1/x</button>
 
-        <button class="btn" data-value="7">7</button>
-        <button class="btn" data-value="8">8</button>
-        <button class="btn" data-value="9">9</button>
-        <button class="btn operator" data-value="×" aria-label="Multiply">×</button>
+          <button class="btn sci" data-fn="sin">sin</button>
+          <button class="btn sci" data-fn="cos">cos</button>
+          <button class="btn sci" data-fn="tan">tan</button>
+          <button class="btn sci" data-fn="atan">atan</button>
 
-        <button class="btn" data-value="4">4</button>
-        <button class="btn" data-value="5">5</button>
-        <button class="btn" data-value="6">6</button>
-        <button class="btn operator" data-value="-" aria-label="Minus">−</button>
+          <button class="btn sci" data-fn="asin">asin</button>
+          <button class="btn sci" data-fn="acos">acos</button>
+          <button class="btn sci" data-fn="ln">ln</button>
+          <button class="btn sci" data-fn="log10">log</button>
 
-        <button class="btn" data-value="1">1</button>
-        <button class="btn" data-value="2">2</button>
-        <button class="btn" data-value="3">3</button>
-        <button class="btn operator" data-value="+" aria-label="Plus">+</button>
+          <button class="btn sci" data-fn="sqrt">√</button>
+          <button class="btn sci" data-fn="pow2">x²</button>
+          <button class="btn sci" data-fn="pow3">x³</button>
+          <button class="btn sci" data-fn="pow">xʸ</button>
 
-        <button class="btn" data-action="negate" aria-label="Negate">±</button>
-        <button class="btn" data-value="0">0</button>
-        <button class="btn" data-value=".">.</button>
-        <button class="btn equals" data-action="calculate" aria-label="Equals">=</button>
-      </div>
-    </section>
+          <button class="btn sci" data-fn="exp">eˣ</button>
+          <button class="btn sci" data-fn="abs">|x|</button>
+          <button class="btn sci" data-fn="percent">%</button>
+          <button class="btn sci" data-fn="negate">±</button>
+        </div>
 
-    <footer class="credits">
-      <small>Keyboard supported: numbers, + - * / (or × ÷), Enter =, Backspace, Esc to clear</small>
-    </footer>
-  </main>
+        <div class="display" id="display" aria-live="polite">0</div>
 
-  <script src="script.js"></script>
-</body>
+        <div class="keys" role="group" aria-label="Calculator buttons">
+          <button class="btn function" data-action="clear" aria-label="Clear">
+            C
+          </button>
+          <button
+            class="btn function"
+            data-action="delete"
+            aria-label="Backspace">
+            ⌫
+          </button>
+          <button
+            class="btn function"
+            data-action="percent"
+            aria-label="Percent">
+            %
+          </button>
+          <button class="btn operator" data-value="÷" aria-label="Divide">
+            ÷
+          </button>
+
+          <button class="btn" data-value="7">7</button>
+          <button class="btn" data-value="8">8</button>
+          <button class="btn" data-value="9">9</button>
+          <button class="btn operator" data-value="×" aria-label="Multiply">
+            ×
+          </button>
+
+          <button class="btn" data-value="4">4</button>
+          <button class="btn" data-value="5">5</button>
+          <button class="btn" data-value="6">6</button>
+          <button class="btn operator" data-value="-" aria-label="Minus">
+            −
+          </button>
+
+          <button class="btn" data-value="1">1</button>
+          <button class="btn" data-value="2">2</button>
+          <button class="btn" data-value="3">3</button>
+          <button class="btn operator" data-value="+" aria-label="Plus">
+            +
+          </button>
+
+          <button class="btn" data-action="negate" aria-label="Negate">
+            ±
+          </button>
+          <button class="btn" data-value="0">0</button>
+          <button class="btn" data-value=".">.</button>
+          <button
+            class="btn equals"
+            data-action="calculate"
+            aria-label="Equals">
+            =
+          </button>
+        </div>
+      </section>
+
+      <footer class="credits">
+        <small
+          >Keyboard: numbers, + - * / (or × ÷), Enter =, Backspace, Esc to
+          clear. Toggle scientific panel with "Sci" button.</small
+        >
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
 </html>
